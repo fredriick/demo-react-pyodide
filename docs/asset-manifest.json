@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "https://github.com/fredriick/demo-react-pyodide.git/static/js/main.0a1282ec.chunk.js",
-    "main.js.map": "https://github.com/fredriick/demo-react-pyodide.git/static/js/main.0a1282ec.chunk.js.map",
-    "runtime-main.js": "https://github.com/fredriick/demo-react-pyodide.git/static/js/runtime-main.ef6cc9e6.js",
-    "runtime-main.js.map": "https://github.com/fredriick/demo-react-pyodide.git/static/js/runtime-main.ef6cc9e6.js.map",
-    "static/css/2.57f9d613.chunk.css": "https://github.com/fredriick/demo-react-pyodide.git/static/css/2.57f9d613.chunk.css",
-    "static/js/2.130fc9d6.chunk.js": "https://github.com/fredriick/demo-react-pyodide.git/static/js/2.130fc9d6.chunk.js",
-    "static/js/2.130fc9d6.chunk.js.map": "https://github.com/fredriick/demo-react-pyodide.git/static/js/2.130fc9d6.chunk.js.map",
-    "static/js/3.f282a9c1.chunk.js": "https://github.com/fredriick/demo-react-pyodide.git/static/js/3.f282a9c1.chunk.js",
-    "static/js/3.f282a9c1.chunk.js.map": "https://github.com/fredriick/demo-react-pyodide.git/static/js/3.f282a9c1.chunk.js.map",
-    "index.html": "https://github.com/fredriick/demo-react-pyodide.git/index.html",
-    "static/css/2.57f9d613.chunk.css.map": "https://github.com/fredriick/demo-react-pyodide.git/static/css/2.57f9d613.chunk.css.map",
-    "static/js/2.130fc9d6.chunk.js.LICENSE.txt": "https://github.com/fredriick/demo-react-pyodide.git/static/js/2.130fc9d6.chunk.js.LICENSE.txt",
-    "static/media/index.css": "https://github.com/fredriick/demo-react-pyodide.git/static/media/roboto-vietnamese-400-normal.3230f9b0.woff2"
+    "main.js": "https://fredriick.github.io/demo-react-pyodide/static/js/main.0a1282ec.chunk.js",
+    "main.js.map": "https://fredriick.github.io/demo-react-pyodide/static/js/main.0a1282ec.chunk.js.map",
+    "runtime-main.js": "https://fredriick.github.io/demo-react-pyodide/static/js/runtime-main.ee2d1cff.js",
+    "runtime-main.js.map": "https://fredriick.github.io/demo-react-pyodide/static/js/runtime-main.ee2d1cff.js.map",
+    "static/css/2.74e497ff.chunk.css": "https://fredriick.github.io/demo-react-pyodide/static/css/2.74e497ff.chunk.css",
+    "static/js/2.130fc9d6.chunk.js": "https://fredriick.github.io/demo-react-pyodide/static/js/2.130fc9d6.chunk.js",
+    "static/js/2.130fc9d6.chunk.js.map": "https://fredriick.github.io/demo-react-pyodide/static/js/2.130fc9d6.chunk.js.map",
+    "static/js/3.f282a9c1.chunk.js": "https://fredriick.github.io/demo-react-pyodide/static/js/3.f282a9c1.chunk.js",
+    "static/js/3.f282a9c1.chunk.js.map": "https://fredriick.github.io/demo-react-pyodide/static/js/3.f282a9c1.chunk.js.map",
+    "index.html": "https://fredriick.github.io/demo-react-pyodide/index.html",
+    "static/css/2.74e497ff.chunk.css.map": "https://fredriick.github.io/demo-react-pyodide/static/css/2.74e497ff.chunk.css.map",
+    "static/js/2.130fc9d6.chunk.js.LICENSE.txt": "https://fredriick.github.io/demo-react-pyodide/static/js/2.130fc9d6.chunk.js.LICENSE.txt",
+    "static/media/index.css": "https://fredriick.github.io/demo-react-pyodide/static/media/roboto-vietnamese-400-normal.3230f9b0.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.ef6cc9e6.js",
-    "static/css/2.57f9d613.chunk.css",
+    "static/js/runtime-main.ee2d1cff.js",
+    "static/css/2.74e497ff.chunk.css",
     "static/js/2.130fc9d6.chunk.js",
     "static/js/main.0a1282ec.chunk.js"
   ]
