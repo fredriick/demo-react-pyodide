@@ -6,7 +6,9 @@ import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import { generateDotProductExercise } from '../pythonCode'
+import Matrix from './Matrix'
+import { updateMatrixCell, isMatrixEqual } from '../utils'
+
 const styles = (theme) => ({
   paper: {
     height: '100vh'
@@ -23,68 +25,124 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center'
+  },
+  rightAnswer: {
+    color: 'green'
+  },
+  wrongAnswer: {
+    color: 'red'
   }
 })
+
 class MatrixMultiplication extends Component {
   constructor(props) {
     super(props)
-this.state = {
-      pyodide: props.pyodide,
-      maxNumberOfRows: 4,
-      maxNumberOfColumns: 4,
+
+    this.state = {
+      maxNumberOfRows: 3,
+      maxNumberOfColumns: 3,
       hasExercise: false,
+      isGenerating: false,
       m: 1,
       n: 1,
       p: 1,
       A: [[0]],
       B: [[0]],
-      C: [[0]]
+      C: [[0]],
+      answer: [[0]]
     }
   }
-generateExercise = () => {
-    const { maxNumberOfRows, maxNumberOfColumns, pyodide } = this.state
-    generateDotProductExercise(pyodide, maxNumberOfRows, maxNumberOfColumns)
+
+  generateExercise = () => {
+    const { maxNumberOfRows, maxNumberOfColumns } = this.state
+    this.props
+      .generator(maxNumberOfRows, maxNumberOfColumns)
       .then((result) => {
         this.setState({
           ...result,
           answer: result.C.map((row) => row.map((col) => '')),
-          hasExercise: true
+          hasExercise: true,
+          isGenerating: false
         })
-        console.log(result)
       })
       .catch((error) => {
         console.log(error)
       })
   }
-handleSubmit = (event) => {
-    event.preventDefault()
-    this.generateExercise()
+
+  onChangeHandler = (i, j, value) => {
+    const intValue = parseInt(value)
+    if (Number.isInteger(intValue)) {
+      value = intValue
+    }
+    const answer = updateMatrixCell(this.state.answer, i, j, value)
+    this.setState({
+      answer
+    })
   }
-render() {
-    const { maxNumberOfRows, maxNumberOfColumns, A, B, C } = this.state
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.setState(
+      {
+        isGenerating: true
+      },
+      this.generateExercise
+    )
+  }
+
+  render() {
+    const { maxNumberOfRows, maxNumberOfColumns, A, B, C, answer, hasExercise, isGenerating } = this.state
     const { classes } = this.props
-return (
+
+    const isCorrect = isMatrixEqual(C, answer)
+
+    return (
       <Container maxWidth="sm">
         <Paper className={classes.paper}>
           <form onSubmit={this.handleSubmit}>
             <TextField className={classes.parameter} type="number" value={maxNumberOfRows} label="Max Rows" />
             <TextField className={classes.parameter} type="number" value={maxNumberOfColumns} label="Max Columns" />
-            <Button type="submit" variant="outlined" color="primary" className={classes.button}>
+            <Button className={classes.button} type="submit" disabled={isGenerating}>
               New Exercise
             </Button>
           </form>
           <div className={classes.exercise}>
-              <Typography variant="body1">
-                  {JSON.stringify(A)} * {JSON.stringify(B)} = {JSON.stringify(C)}
-              </Typography>
+            {hasExercise ? (
+              <>
+                <Matrix values={A} readOnly={true} />
+                <Matrix values={B} readOnly={true} />
+                <span>=</span>
+                <Matrix values={answer} readOnly={false} onChange={this.onChangeHandler} />
+              </>
+            ) : (
+              <Typography variant="body1">Click the button to generate a new exercise</Typography>
+            )}
+            {hasExercise ? (
+              <div>
+                {isCorrect ? (
+                  <Typography className={classes.rightAnswer} variant="body1">
+                    Correct
+                  </Typography>
+                ) : (
+                  <Typography className={classes.wrongAnswer} variant="body1">
+                    Incorrect
+                  </Typography>
+                )}
+              </div>
+            ) : (
+              ''
+            )}
           </div>
         </Paper>
       </Container>
     )
   }
 }
+
 MatrixMultiplication.propTypes = {
   classes: PropTypes.object,
-  pyodide: PropTypes.object
+  generator: PropTypes.func
 }
+
 export default withStyles(styles)(MatrixMultiplication)
